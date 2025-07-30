@@ -15,7 +15,7 @@ const Card = ({file}:{file:Models.Document}) => {
 
             </div>
             </div>
-            <div className={'flex items-center justify-between mt-8 text-sm text-gray-600 font-light font-sans'}>
+            <div className={'flex items-center justify-between mt-7 text-sm text-gray-600 font-light font-sans'}>
 
                <div>
                    <p>{formatDateTime(file.$createdAt)}</p>
