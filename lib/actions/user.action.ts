@@ -20,7 +20,7 @@ const getUserByEmail = async (email:string) => {
     return result.total>0?result.documents[0]:null;
 }
 
-const handleError = (error:any,message:string) => {
+const handleError = (error:unknown,message:string) => {
     console.log(error,message)
 
     throw error;
@@ -33,7 +33,7 @@ export const sendEmailOtp = async (email:string) => {
         const session = await account.createEmailToken(ID.unique(),email)
         return session.userId
     }
-    catch (error) {
+    catch (error:unknown) {
         handleError(error,
             'Failed to send email otp')
     }
@@ -103,7 +103,7 @@ export const signOut = async () => {
         await account.deleteSession('current');
         (await cookies()).delete('appwrite_session')
     }
-    catch (error) {
+    catch (error:unknown) {
         handleError(error, 'Failed to sign out user')
     }
     finally {

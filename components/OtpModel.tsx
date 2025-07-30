@@ -82,7 +82,8 @@ const OtpModel = ({accountId,email}:{accountId:string;email:string;}) => {
 
                 </AlertDialogFooter>
                 <div className={'text-center subtitle-2 text-light-100 '}>
-                    Didn't receive the OTP? <span onClick={handleResendOtp} className={'text-brand cursor-pointer'}>Resend</span>
+                    Didn&apos;t receive the OTP? <span onClick={handleResendOtp} className={'text-brand' +
+                    ' cursor-pointer'}>Resend</span>
                 </div>
             </AlertDialogContent>
         </AlertDialog>
