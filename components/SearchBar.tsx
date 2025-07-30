@@ -31,7 +31,7 @@ export const SearchBar = () => {
             setOpen(true);
         }
         fetchFiles();
-    }, [delayQuery]);
+    }, [delayQuery, path, router]);
 
 
     useEffect(() => {
