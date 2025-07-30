@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -17,7 +16,6 @@ import { Input } from "@/components/ui/input"
 import {useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {type} from "node:os";
 import {createAccount, signInUser} from "@/lib/actions/user.action";
 import OtpModel from "@/components/OtpModel";
 
@@ -55,8 +53,9 @@ const formSchema =authFormSchema(type)
             setAccountId(user.accountId)
 
         }
-        catch (e:any) {
-            throw new Error(e.message)
+        catch (e:unknown) {
+            console.log('Error submitting form:', e);
+
         }
         finally {
             setLoading(false)
