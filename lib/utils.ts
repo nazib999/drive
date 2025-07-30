@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -182,42 +183,58 @@ export const constructDownloadUrl = (bucketFileId: string) => {
   return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/download?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}`;
 };
 
+
 // DASHBOARD UTILS
-// export const getUsageSummary = (totalSpace: any) => {
-//   return [
-//     {
-//       title: "Documents",
-//       size: totalSpace.document.size,
-//       latestDate: totalSpace.document.latestDate,
-//       icon: "/assets/icons/file-document-light.svg",
-//       url: "/documents",
-//     },
-//     {
-//       title: "Images",
-//       size: totalSpace.image.size,
-//       latestDate: totalSpace.image.latestDate,
-//       icon: "/assets/icons/file-image-light.svg",
-//       url: "/images",
-//     },
-//     {
-//       title: "Media",
-//       size: totalSpace.video.size + totalSpace.audio.size,
-//       latestDate:
-//           totalSpace.video.latestDate > totalSpace.audio.latestDate
-//               ? totalSpace.video.latestDate
-//               : totalSpace.audio.latestDate,
-//       icon: "/assets/icons/file-video-light.svg",
-//       url: "/media",
-//     },
-//     {
-//       title: "Others",
-//       size: totalSpace.other.size,
-//       latestDate: totalSpace.other.latestDate,
-//       icon: "/assets/icons/file-other-light.svg",
-//       url: "/others",
-//     },
-//   ];
-// };
+interface FileTypeSpace {
+  size: number;
+  latestDate: Date;
+}
+
+interface TotalSpace {
+  document: FileTypeSpace;
+  image: FileTypeSpace;
+  video: FileTypeSpace;
+  audio: FileTypeSpace;
+  other: FileTypeSpace;
+}
+
+export const getUsageSummary = (totalSpace: TotalSpace) => {
+  return [
+    {
+      title: "Documents",
+      size: totalSpace.document.size,
+      latestDate: totalSpace.document.latestDate,
+      icon: "/assets/icons/file-document-light.svg",
+      url: "/documents",
+    },
+    {
+      title: "Images",
+      size: totalSpace.image.size,
+      latestDate: totalSpace.image.latestDate,
+      icon: "/assets/icons/file-image-light.svg",
+      url: "/images",
+    },
+    {
+      title: "Media",
+      size: totalSpace.video.size + totalSpace.audio.size,
+      latestDate:
+          totalSpace.video.latestDate > totalSpace.audio.latestDate
+              ? totalSpace.video.latestDate
+              : totalSpace.audio.latestDate,
+      icon: "/assets/icons/file-video-light.svg",
+      url: "/media",
+    },
+    {
+      title: "Others",
+      size: totalSpace.other.size,
+      latestDate: totalSpace.other.latestDate,
+      icon: "/assets/icons/file-other-light.svg",
+      url: "/others",
+    },
+  ];
+};
+
+
 
 export const getFileTypesParams = (type: string) => {
   switch (type) {

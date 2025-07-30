@@ -3,14 +3,10 @@ import Sidebar from "@/components/Sidebar";
 import { Header } from "@/components/Header";
 import { getCurrentUser } from "@/lib/actions/user.action";
 import { redirect } from "next/navigation";
-import { Poppins } from "next/font/google";
+
 import MobileNav from "@/components/MobileNav";
 
-const poppins = Poppins({
-    variable: "--font-poppins",
-    subsets: ["latin"],
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
     const currentUser = await getCurrentUser();

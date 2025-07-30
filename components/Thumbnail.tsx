@@ -15,7 +15,7 @@ function shortenFileName(name:string, maxLength = 20) {
     return name.slice(0, maxLength - 3) + '...';
 }
 
-const Thumbnail = ({name,type,extension,url='',imageClassName,className}:Props) => {
+const Thumbnail = ({name,type,extension,url=''}:Props) => {
     const isImage = type === 'image' && extension!== 'svg';
     return (
         <figure className={'flex items-center gap-4 mt-2 '}>
